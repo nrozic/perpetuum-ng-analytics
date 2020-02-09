@@ -1,11 +1,10 @@
 import { NgModule, ModuleWithProviders } from '@angular/core'
-import { AnalyticsComponent } from './analytics.component'
 import { IAnalyticsConfig } from '@analytics/models/Analytics-config.model'
 
 @NgModule({
-    declarations: [AnalyticsComponent],
+    declarations: [],
     imports: [],
-    exports: [AnalyticsComponent],
+    exports: [],
 })
 export class AnalyticsModule {
     static forRoot(config: IAnalyticsConfig): ModuleWithProviders {

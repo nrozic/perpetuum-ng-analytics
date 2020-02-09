@@ -3,5 +3,5 @@
  */
 
 export * from './lib/analytics.service'
-export * from './lib/analytics.component'
+export * from './lib/models/Analytics-config.model'
 export * from './lib/analytics.module'
