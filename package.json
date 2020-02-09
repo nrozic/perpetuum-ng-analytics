@@ -10,6 +10,7 @@
     },
     "license": "(GPL-3.0)",
     "keywords": ["angular", "SSR", "Angular Universal", "Google Analytics", "gtag.js Angular"],
+    "homepage": "https://github.com/nrozic/perpetuum-ng-analytics",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
