@@ -52,6 +52,7 @@
         "karma-jasmine": "~2.0.1",
         "karma-jasmine-html-reporter": "^1.4.0",
         "ng-packagr": "^5.4.0",
+        "prettier": "^1.19.1",
         "pretty-quick": "^2.0.1",
         "protractor": "~5.4.0",
         "stylelint": "^13.1.0",
