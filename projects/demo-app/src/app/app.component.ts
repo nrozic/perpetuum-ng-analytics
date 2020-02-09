@@ -1,5 +1,6 @@
-import { Component, OnInit, Renderer, Renderer2 } from '@angular/core'
-import { AnalyticsService } from '@projects/analytics/src/public-api'
+import { Component, OnInit, Renderer2 } from '@angular/core'
+
+import { AnalyticsService } from 'perpetuum-analytics'
 
 @Component({
     selector: 'app-root',

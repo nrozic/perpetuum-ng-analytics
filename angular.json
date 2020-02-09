@@ -36,31 +36,31 @@
                 }
             }
         },
-        "analytics": {
+        "perpetuum-analytics": {
             "projectType": "library",
-            "root": "projects/analytics",
-            "sourceRoot": "projects/analytics/src",
+            "root": "projects/perpetuum-analytics",
+            "sourceRoot": "projects/perpetuum-analytics/src",
             "prefix": "perpetuum",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
                     "options": {
-                        "tsConfig": "projects/analytics/tsconfig.lib.json",
-                        "project": "projects/analytics/ng-package.json"
+                        "tsConfig": "projects/perpetuum-analytics/tsconfig.lib.json",
+                        "project": "projects/perpetuum-analytics/ng-package.json"
                     }
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/analytics/src/test.ts",
-                        "tsConfig": "projects/analytics/tsconfig.spec.json",
-                        "karmaConfig": "projects/analytics/karma.conf.js"
+                        "main": "projects/perpetuum-analytics/src/test.ts",
+                        "tsConfig": "projects/perpetuum-analytics/tsconfig.spec.json",
+                        "karmaConfig": "projects/perpetuum-analytics/karma.conf.js"
                     }
                 },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": ["projects/analytics/tsconfig.lib.json", "projects/analytics/tsconfig.spec.json"],
+                        "tsConfig": ["projects/perpetuum-analytics/tsconfig.lib.json", "projects/perpetuum-analytics/tsconfig.spec.json"],
                         "exclude": ["**/node_modules/**"]
                     }
                 }

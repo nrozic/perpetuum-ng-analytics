@@ -23,7 +23,7 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "lib:build": "ng build analytics",
-        "lib:package": "cd dist/analytics && npm pack"
+        "lib:package": "cd dist/perpetuum-analytics && npm pack"
     },
     "husky": {
         "hooks": {
