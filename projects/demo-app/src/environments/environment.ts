@@ -4,6 +4,9 @@
 
 export const environment = {
     production: false,
+    logs: true,
+    trackingId: 'UA-139043393-1',
+    trackingType: 'gtag',
 }
 
 /*

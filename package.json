@@ -1,13 +1,24 @@
 {
     "name": "perpetuum-ng-analytics",
-    "version": "0.0.0",
+    "description": "Google Analytics module for Angular. This module is SSR compatible and can be used in Angular Universal applications",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": {
+        "name" : "Nikola Rožić",
+        "email" : "nikola@trilium.io",
+        "url" : "https://trilium.io/"
+    },
+    "license": "(GPL-3.0)",
+    "keywords": ["angular", "SSR", "Angular Universal", "Google Analytics", "gtag.js Angular"],
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "lib:build": "ng build analytics",
+        "lib:package": "cd dist/analytics && npm pack"
     },
     "husky": {
         "hooks": {
@@ -55,6 +66,7 @@
         "prettier": "^1.19.1",
         "pretty-quick": "^2.0.1",
         "protractor": "~5.4.0",
+        "stacktrace-js": "^2.0.2",
         "stylelint": "^13.1.0",
         "stylelint-order": "^4.0.0",
         "ts-node": "~7.0.0",
