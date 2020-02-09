@@ -1,27 +1,50 @@
-# PerpetuumNgAnalytics
+# Perpetuum Ng Analytics
+
+[![](https://img.shields.io/badge/version-1.0.0-green.svg)](https://perpetuum.eu)
+[![](https://img.shields.io/badge/Angular-7+-informational.svg)](https://angular.io)
+
+![PerpetuumNgAnalytics](https://repository-images.githubusercontent.com/239224377/1e536b00-4b7d-11ea-8f95-3681c51d54bd)
+
+## About
+
+This is Angular module that enables easy Google Analytics integration into Angular SPA-s, and most importantly it is 100% SSR compatible, so you can use it even if you are running Angular Universal, it won't break the server side rendering.
+
+Tracking is possible using any script provided by Google Analytics, but we recommend using gtag.js
+
+Tested with Angular 7+ although it might work with older versions as well.
+
+## Installation and configuration
+
+-   Install package using npm
+-   in your app.module.ts add Module to imports arry:
+
+```javascript
+imports: [
+    ...
+    AnalyticsModule.forRoot({
+        trackingId: <YOUR TRACKING ID>,
+        trackingType: 'gtag',
+    }),
+],
+```
+
+Replace <YOUR TRACKING ID> with Google Analytics ID ([Find your Analytics tracking id](https://support.google.com/analytics/answer/1008080?hl=en))
+Supported tracking types are 'analytics', 'gtag' or 'gtm'.
+
+-   in your app.component.ts initkialize tracking like this:
+
+```javascript
+ngOnInit(): void {
+   this.analyticsService.setGoogleAnalyticsScripts(this.renderer)
+}
+```
+
+If you are in EU and need to be GDPR compliant, you can first check if you have user permission to use analytics, and initialize module conditionaly.
+
+This method will generate tracking script and it will initialize tracking, you are all set. Every route change will send event to Google Analytics.
+
+## Issues
+
+For any known issues check list of opened [issues](https://github.com/nrozic/perpetuum-ng-analytics/issues) and if you find any issue with this module, please consider opening an [issue](https://github.com/nrozic/perpetuum-ng-analytics/issues/new) with description
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
