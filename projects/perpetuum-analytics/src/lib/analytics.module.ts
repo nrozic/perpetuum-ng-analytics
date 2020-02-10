@@ -1,5 +1,5 @@
 import { NgModule, ModuleWithProviders } from '@angular/core'
-import { IAnalyticsConfig } from '@analytics/models/Analytics-config.model'
+import { IAnalyticsConfig } from '@projects/perpetuum-analytics/src/lib/models/Analytics-config.model'
 
 @NgModule({
     declarations: [],

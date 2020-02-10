@@ -16,10 +16,10 @@
         "paths": {
             "perpetuum-ng-analytics": ["dist/perpetuum-ng-analytics"],
             "perpetuum-ng-analytics/*": ["dist/perpetuum-ng-analytics/*"],
-            "analytics": ["dist/analytics"],
-            "analytics/*": ["dist/analytics/*"],
+            "perpetuum-analytics": ["dist/perpetuum-analytics"],
+            "perpetuum-analytics/*": ["dist/perpetuum-analytics/*"],
             "@projects/*": ["projects/*"],
-            "@analytics/*": ["projects/analytics/src/lib/*"],
+            "@analytics/*": ["projects/perpetuum-analytics/src/lib/*"],
             "@demoapp/*": ["projects/demo-app/src/app/*"],
             "@node/*": ["node_modules/*"]
         }
