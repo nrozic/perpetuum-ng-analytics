@@ -8,6 +8,8 @@ blocks:
   - name: 'Block #1'
     task:
       jobs:
-        - name: 'Job #1'
+        - name: Checkout to master branch
           commands:
-            - checkout
+            - git checkout master
+            - npm install
+            - ng lint
