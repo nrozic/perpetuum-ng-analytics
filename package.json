@@ -4,16 +4,22 @@
     "version": "1.0.1",
     "main": "index.js",
     "author": {
-        "name" : "Nikola Rožić",
-        "email" : "nikola@trilium.io",
-        "url" : "https://trilium.io/"
+        "name": "Nikola Rožić",
+        "email": "nikola@trilium.io",
+        "url": "https://trilium.io/"
     },
     "license": "(GPL-3.0)",
-    "keywords": ["angular", "SSR", "Angular Universal", "Google Analytics", "gtag.js Angular"],
+    "keywords": [
+        "angular",
+        "SSR",
+        "Angular Universal",
+        "Google Analytics",
+        "gtag.js Angular"
+    ],
     "homepage": "https://github.com/nrozic/perpetuum-ng-analytics",
     "repository": {
-        "type" : "git",
-        "url" : "https://github.com/nrozic/perpetuum-ng-analytics.git"
+        "type": "git",
+        "url": "https://github.com/nrozic/perpetuum-ng-analytics.git"
     },
     "scripts": {
         "ng": "ng",
@@ -46,6 +52,7 @@
         "@angular/platform-browser-dynamic": "~8.2.14",
         "@angular/router": "~8.2.14",
         "husky": "^4.2.1",
+        "perpetuum-analytics": "^1.0.1",
         "rxjs": "~6.4.0",
         "tslib": "^1.10.0",
         "zone.js": "~0.9.1"
