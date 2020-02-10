@@ -1,7 +1,7 @@
 {
     "name": "perpetuum-ng-analytics",
     "description": "Google Analytics module for Angular. This module is SSR compatible and can be used in Angular Universal applications",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "main": "index.js",
     "author": {
         "name": "Nikola Rožić",
@@ -28,7 +28,7 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "lib:build": "ng build analytics",
+        "lib:build": "ng build perpetuum-analytics",
         "lib:package": "cd dist/perpetuum-analytics && npm pack"
     },
     "husky": {
@@ -51,8 +51,6 @@
         "@angular/platform-browser": "~8.2.14",
         "@angular/platform-browser-dynamic": "~8.2.14",
         "@angular/router": "~8.2.14",
-        "husky": "^4.2.1",
-        "perpetuum-analytics": "^1.0.1",
         "rxjs": "~6.4.0",
         "tslib": "^1.10.0",
         "zone.js": "~0.9.1"
@@ -67,6 +65,7 @@
         "@types/jasminewd2": "~2.0.3",
         "@types/node": "~8.9.4",
         "codelyzer": "^5.0.0",
+        "husky": "^4.2.1",
         "jasmine-core": "~3.4.0",
         "jasmine-spec-reporter": "~4.2.1",
         "karma": "~4.1.0",
