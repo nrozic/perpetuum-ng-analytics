@@ -4,7 +4,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common'
 import { filter, map, mergeMap } from 'rxjs/operators'
 import { Title } from '@angular/platform-browser'
 
-import { IAnalyticsConfig } from './models/Analytics-config.model'
+import { IAnalyticsConfig, IEventData } from './models/Analytics-config.model'
 
 declare const gtag: any
 declare const ga: any
@@ -44,43 +44,47 @@ export class AnalyticsService {
             }
         }
     }
-
-    sendEvent(eventCategory: string, eventAction: string, eventLabel: string, eventValue: number): void {
+    /**
+     * Method to send event to Google Analytics. It can be used from components and services to send custom events
+     *
+     * @param data Object with data that will be send for event
+     */
+    sendEvent(data: IEventData): void {
         switch (this.config.trackingType) {
             case 'analytics':
-                this._gaSendEvent(eventCategory, eventAction, eventLabel, eventValue)
+                this._gaSendEvent(data)
                 break
             case 'gtm':
-                this._dataLayerSendEvent(eventCategory, eventAction, eventLabel, eventValue)
+                this._dataLayerSendEvent(data)
                 break
             default:
-                this._gtagSendEvent(eventCategory, eventAction, eventLabel, eventValue)
+                this._gtagSendEvent(data)
                 break
         }
     }
 
-    private _gaSendEvent(eventCategory: string, eventAction: string, eventLabel: string, eventValue: number): void {
+    private _gaSendEvent(data: IEventData): void {
         // console.log('Sending custom event ga')
-        ga('send', 'event', eventCategory, eventAction, eventLabel, eventValue)
+        ga('send', 'event', data)
     }
 
-    private _dataLayerSendEvent(eventCategory: string, eventAction: string, eventLabel: string, eventValue: number): void {
+    private _dataLayerSendEvent(data: IEventData): void {
         // console.log('Sending custom event datalayer')
         dataLayer.push({
             event: 'GAEvent',
-            eventCategory,
-            eventAction,
-            eventLabel,
-            eventValue,
+            eventCategory: data.eventCategory,
+            eventAction: data.eventAction,
+            eventLabel: data.eventLabel,
+            eventValue: data.eventValue,
         })
     }
 
-    private _gtagSendEvent(eventCategory: string, eventAction: string, eventLabel: string, eventValue: number): void {
+    private _gtagSendEvent(data: IEventData): void {
         // console.log('Sending custom event gtag')
-        gtag('event', eventAction, {
-            event_category: eventCategory,
-            event_label: eventLabel,
-            value: eventValue,
+        gtag('event', data.eventAction, {
+            event_category: data.eventCategory,
+            event_label: data.eventLabel,
+            value: data.eventValue,
         })
     }
 
@@ -112,7 +116,7 @@ export class AnalyticsService {
         renderer.appendChild(this.document.body, script)
 
         this._startTracking()
-        console.log('Google Analytics module initialized')
+        // console.log('Google Analytics module initialized')
     }
 
     private _getScript(): string {

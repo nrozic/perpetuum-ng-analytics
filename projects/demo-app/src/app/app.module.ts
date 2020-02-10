@@ -7,8 +7,7 @@ import { HomeComponent } from './home/home.component'
 import { AboutComponent } from './about/about.component'
 import { ContactComponent } from './contact/contact.component'
 import { environment } from '../environments/environment'
-import { AnalyticsModule } from 'perpetuum-analytics'
-import { ITrackingType } from 'perpetuum-analytics'
+import { ITrackingType, AnalyticsModule } from 'perpetuum-analytics'
 
 @NgModule({
     declarations: [AppComponent, HomeComponent, AboutComponent, ContactComponent],
