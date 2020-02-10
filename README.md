@@ -1,6 +1,6 @@
 # Perpetuum Ng Analytics
 
-[![](https://img.shields.io/badge/version-1.0.1-green.svg)](https://perpetuum.eu)
+[![](https://img.shields.io/badge/version-1.0.2-green.svg)](https://perpetuum.eu)
 [![](https://img.shields.io/badge/Angular-7+-informational.svg)](https://angular.io)
 
 ![PerpetuumNgAnalytics](https://repository-images.githubusercontent.com/239224377/1e536b00-4b7d-11ea-8f95-3681c51d54bd)
@@ -15,10 +15,14 @@ Tested with Angular 7+ although it might work with older versions as well.
 
 ## Installation and configuration
 
--   Install package using npm
+-   Install package using npm `npm i perpetuum-analytics`
 -   in your app.module.ts add Module to imports arry:
 
 ```javascript
+import { ITrackingType, AnalyticsModule } from 'perpetuum-analytics'
+
+...
+
 imports: [
     ...
     AnalyticsModule.forRoot({
@@ -31,9 +35,13 @@ imports: [
 Replace <YOUR TRACKING ID> with Google Analytics ID ([Find your Analytics tracking id](https://support.google.com/analytics/answer/1008080?hl=en))
 Supported tracking types are 'analytics', 'gtag' or 'gtm'.
 
--   in your app.component.ts initkialize tracking like this:
+-   in your app.component.ts initialize tracking like this:
 
 ```javascript
+import { AnalyticsService } from 'perpetuum-analytics'
+
+...
+
 ngOnInit(): void {
    this.analyticsService.setGoogleAnalyticsScripts(this.renderer)
 }
