@@ -1,6 +1,6 @@
 # Perpetuum Ng Analytics
 
-[![](https://img.shields.io/badge/version-1.1.1-green.svg)](https://perpetuum.eu)
+[![](https://img.shields.io/badge/version-1.1.4-green.svg)](https://perpetuum.eu)
 [![](https://img.shields.io/badge/Angular-7+-informational.svg)](https://angular.io)
 
 ![PerpetuumNgAnalytics](https://repository-images.githubusercontent.com/239224377/1e536b00-4b7d-11ea-8f95-3681c51d54bd)
