@@ -1,6 +1,5 @@
 import { NgModule, ModuleWithProviders } from '@angular/core'
-import { IAnalyticsConfig } from './models/Analytics-config.model'
-import { AnalyticsDirective } from './analytics.directive'
+import { IAnalyticsConfig, AnalyticsDirective } from '../public-api'
 
 @NgModule({
     declarations: [AnalyticsDirective, AnalyticsDirective],
