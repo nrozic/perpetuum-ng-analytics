@@ -38,7 +38,7 @@
   "run-if-changed": {
     "package-lock.json": "npm install --prefer-offline"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular-devkit/build-ng-packagr": "^0.1002.0",
     "@angular/animations": "~13.3.3",
