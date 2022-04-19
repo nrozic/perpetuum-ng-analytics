@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/nrozic/perpetuum-ng-analytics/compare/perpetuum-analytics@2.0.0...perpetuum-analytics@2.0.1) (2022-04-19)
+
+**Note:** Version bump only for package perpetuum-analytics
+
 # 2.0.0 (2022-04-19)
 
 -   chore!: Deprecating reference to renderer in SetGoogleAnalyticsScript method ([850b3cf](https://github.com/nrozic/perpetuum-ng-analytics/commit/850b3cf07ec02bc152b0b4ecb5bb811e69554f2f))
