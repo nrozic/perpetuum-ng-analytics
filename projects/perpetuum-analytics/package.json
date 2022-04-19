@@ -13,6 +13,7 @@
     "SSR",
     "Angular Universal",
     "Google Analytics",
+    "Google Analytics v4",
     "gtag.js Angular"
   ],
   "homepage": "https://github.com/nrozic/perpetuum-ng-analytics",
@@ -21,8 +22,8 @@
     "url": "https://github.com/nrozic/perpetuum-ng-analytics.git"
   },
   "peerDependencies": {
-    "@angular/common": ">=8.2.14",
-    "@angular/core": ">=8.2.14",
-    "rxjs": ">=6.4.0"
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14",
+    "rxjs": "^6.4.0"
   }
 }
