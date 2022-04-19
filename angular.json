@@ -23,13 +23,6 @@
                         "tsConfig": "projects/perpetuum-analytics/tsconfig.spec.json",
                         "karmaConfig": "projects/perpetuum-analytics/karma.conf.js"
                     }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": ["projects/perpetuum-analytics/tsconfig.lib.json", "projects/perpetuum-analytics/tsconfig.spec.json"],
-                        "exclude": ["**/node_modules/**"]
-                    }
                 }
             }
         },
@@ -52,13 +45,6 @@
                         "main": "projects/perpetuum-analytics/src/test.ts",
                         "tsConfig": "projects/perpetuum-analytics/tsconfig.spec.json",
                         "karmaConfig": "projects/perpetuum-analytics/karma.conf.js"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": ["projects/perpetuum-analytics/tsconfig.lib.json", "projects/perpetuum-analytics/tsconfig.spec.json"],
-                        "exclude": ["**/node_modules/**"]
                     }
                 }
             }
