@@ -20,7 +20,6 @@
             "perpetuum-analytics/*": ["dist/perpetuum-analytics/*"],
             "@projects/*": ["projects/*"],
             "@analytics/*": ["projects/perpetuum-analytics/src/lib/*"],
-            "@demoapp/*": ["projects/demo-app/src/app/*"],
             "@node/*": ["node_modules/*"]
         }
     },
