@@ -1,4 +1,4 @@
-import { Injectable, Inject, PLATFORM_ID, Renderer2 } from '@angular/core'
+import { Injectable, Inject, PLATFORM_ID, Renderer2, RendererFactory2 } from '@angular/core'
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router'
 import { DOCUMENT, isPlatformBrowser } from '@angular/common'
 import { filter, map, mergeMap } from 'rxjs/operators'
@@ -20,56 +20,18 @@ export class AnalyticsService {
         @Inject('gaConfig') private config: IAnalyticsConfig,
         private router: Router,
         private activatedRoute: ActivatedRoute,
-        private titleService: Title
-    ) {}
-
-    /**
-     * @description It will initialize Google Analytics module and tracking. Call this method when application boots up.
-     * Good place to call this method is in `app.component` on init
-     *
-     * @param renderer reference to `Renderer2` since renderer can't be used directly in services
-     */
-    setGoogleAnalyticsScripts(renderer: Renderer2): void {
-        if (isPlatformBrowser(this.platformId)) {
-            switch (this.config.trackingType) {
-                case 'analytics':
-                    this._gaSend()
-                    break
-                case 'gtm':
-                    this._dataLayerSend()
-                    break
-                default:
-                    this._setGtag(renderer)
-                    break
-            }
-        }
+        private titleService: Title,
+        private rendererFactory: RendererFactory2
+    ) {
+        this.renderer = rendererFactory.createRenderer(null, null)
     }
-    /**
-     * Method to send event to Google Analytics. It can be used from components and services to send custom events
-     *
-     * @param data Object with data that will be send for event
-     */
-    sendEvent(data: IEventData): void {
-        switch (this.config.trackingType) {
-            case 'analytics':
-                this._gaSendEvent(data)
-                break
-            case 'gtm':
-                this._dataLayerSendEvent(data)
-                break
-            default:
-                this._gtagSendEvent(data)
-                break
-        }
-    }
+    private renderer: Renderer2
 
-    private _gaSendEvent(data: IEventData): void {
-        // console.log('Sending custom event ga')
+    static gaSendEvent(data: IEventData): void {
         ga('send', 'event', data)
     }
 
-    private _dataLayerSendEvent(data: IEventData): void {
-        // console.log('Sending custom event datalayer')
+    static dataLayerSendEvent(data: IEventData): void {
         dataLayer.push({
             event: 'GAEvent',
             eventCategory: data.eventCategory,
@@ -79,8 +41,7 @@ export class AnalyticsService {
         })
     }
 
-    private _gtagSendEvent(data: IEventData): void {
-        // console.log('Sending custom event gtag')
+    static gtagSendEvent(data: IEventData): void {
         gtag('event', data.eventAction, {
             event_category: data.eventCategory,
             event_label: data.eventLabel,
@@ -89,34 +50,73 @@ export class AnalyticsService {
     }
 
     /**
-     * @description It will create gtag script tag dynamically using tracking ID provided in configuration
+     * @description It will initialize Google Analytics module and tracking. Call this method when application boots up.
+     * Good place to call this method is in `app.component` on init
      *
-     * @param renderer reference to `Renderer2` since renderer can't be used directly in services
+     * @param renderer Reference to `Renderer2` since renderer can't be used directly in services.
+     * Deprecated: since version 2.0.0 reference to renderer2 is not needed anymore. It remains as optional argument, but it won't be
+     * used anymore
      */
-    private _setGtag(renderer: Renderer2): void {
-        if (this.config.trackingType === 'gtag') {
-            const gatag: HTMLScriptElement = renderer.createElement('script')
-            gatag.setAttribute('async', '')
-            gatag.src = `https://www.googletagmanager.com/gtag/js?id=${this.config.trackingId}`
-            renderer.appendChild(this.document.body, gatag)
+    setGoogleAnalyticsScripts(renderer?: Renderer2): void {
+        if (isPlatformBrowser(this.platformId)) {
+            switch (this.config.trackingType) {
+                case 'analytics':
+                    this._gaSend()
+                    break
+                case 'gtm':
+                    this._dataLayerSend()
+                    break
+                default:
+                    this._setGtag()
+                    break
+            }
         }
-
-        this._setGoogleAnalyticsScriptTag(renderer)
+    }
+    /**
+     * Method to send event to Google Analytics. It can be used from components and services to send custom events
+     *
+     * @param data Object with data that will be sent for event
+     */
+    sendEvent(data: IEventData): void {
+        switch (this.config.trackingType) {
+            case 'analytics':
+                AnalyticsService.gaSendEvent(data)
+                break
+            case 'gtm':
+                AnalyticsService.dataLayerSendEvent(data)
+                break
+            default:
+                AnalyticsService.gtagSendEvent(data)
+                break
+        }
     }
 
     /**
-     * @description It will create Google analytics script tag dynamically using tracking ID provided in configuration
+     * @description It will create gtag script tag dynamically using tracking ID provided in configuration
      *
-     * @param renderer reference to `Renderer2` since renderer can't be used directly in services
+     * @param renderer reference to `Renderer2`
      */
-    private _setGoogleAnalyticsScriptTag(renderer: Renderer2): void {
-        const script: HTMLScriptElement = renderer.createElement('script')
+    private _setGtag(renderer?: Renderer2): void {
+        if (this.config.trackingType === 'gtag') {
+            const gatag: HTMLScriptElement = this.renderer.createElement('script')
+            gatag.setAttribute('async', '')
+            gatag.src = `https://www.googletagmanager.com/gtag/js?id=${this.config.trackingId}`
+            this.renderer.appendChild(this.document.body, gatag)
+        }
+
+        this._setGoogleAnalyticsScriptTag()
+    }
+
+    /**
+     * @description It will create Google Analytics script tag dynamically using tracking ID provided in configuration
+     */
+    private _setGoogleAnalyticsScriptTag(): void {
+        const script: HTMLScriptElement = this.renderer.createElement('script')
         script.text = this._getScript()
 
-        renderer.appendChild(this.document.body, script)
+        this.renderer.appendChild(this.document.body, script)
 
         this._startTracking()
-        // console.log('Google Analytics module initialized')
     }
 
     private _getScript(): string {
@@ -147,7 +147,7 @@ export class AnalyticsService {
     }
 
     /**
-     * @description It initkializes tracking by subscribing to router event. This will ensure that every route change
+     * @description It initializes tracking by subscribing to router event. This will ensure that every route change
      * triggers method to send new page view event to Google Analytics
      */
     private _startTracking(): void {
@@ -165,13 +165,13 @@ export class AnalyticsService {
                 filter(route => route.outlet === 'primary'),
                 mergeMap(route => route.data)
             )
-            .subscribe(event => {
+            .subscribe(() => {
                 this._sendPageViewEvent()
             })
     }
 
     /**
-     * @description It will check configuration and send pagewiew event using appropriate syntax
+     * @description It will check configuration and send pagehide event using appropriate syntax
      */
     private _sendPageViewEvent(): void {
         switch (this.config.trackingType) {
@@ -188,10 +188,9 @@ export class AnalyticsService {
     }
 
     /**
-     * @description It will send pageview event using `gtag.js` syntax
+     * @description It will send page-view event using `gtag.js` syntax
      */
     private _gtagSend(): void {
-        // console.log('Sending pageViewEvent GTAG')
         gtag('config', this.config.trackingId, {
             page_title: this.titleService.getTitle(),
             page_path: this.router.url,
@@ -199,20 +198,18 @@ export class AnalyticsService {
     }
 
     /**
-     * @description It will send pageview event using `analytics.js` syntax
+     * @description It will send page-view event using `analytics.js` syntax
      */
     private _gaSend(): void {
-        // console.log('Sending pageViewEvent GA')
         ga('set', 'page', this.router.url)
         ga('set', 'title', this.titleService.getTitle())
         ga('send', 'pageview')
     }
 
     /**
-     * @description It will send pageview event using `gtm.js` syntax
+     * @description It will send page-view event using `gtm.js` syntax
      */
     private _dataLayerSend(): void {
-        // console.log('Sending pageViewEvent dataLayer')
         dataLayer.push({
             event: 'pageview',
             page: {

@@ -14,6 +14,7 @@
         "SSR",
         "Angular Universal",
         "Google Analytics",
+        "Google Analytics v4",
         "gtag.js Angular"
     ],
     "homepage": "https://github.com/nrozic/perpetuum-ng-analytics",
@@ -73,6 +74,7 @@
         "karma-coverage-istanbul-reporter": "~2.0.1",
         "karma-jasmine": "~2.0.1",
         "karma-jasmine-html-reporter": "^1.4.0",
+        "lerna": "^4.0.0",
         "ng-packagr": "^5.4.0",
         "prettier": "^1.19.1",
         "pretty-quick": "^2.0.1",
