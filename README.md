@@ -83,10 +83,7 @@ For any known issues check list of opened [issues](https://github.com/nrozic/per
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
-## Release notes
+## Potential breaking changes from version 2.0.0
 
-### 2.0.0
-
--   Updated readme with GA4 migration guide
-    #### **BREAKING CHANGES:**
-    -   You don't have to pass renderer2 as param from the component when calling setGoogleAnalyticsScripts method in analytics service
+You don't have to pass renderer2 as param from the component when calling setGoogleAnalyticsScripts method in analytics service.
+Method argument is deprecated and can/will be removed in future versions
