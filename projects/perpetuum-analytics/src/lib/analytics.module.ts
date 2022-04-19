@@ -8,7 +8,7 @@ import { IAnalyticsConfig } from './models/Analytics-config.model'
     exports: [AnalyticsDirective],
 })
 export class AnalyticsModule {
-    static forRoot(config: IAnalyticsConfig): ModuleWithProviders {
+    static forRoot(config: IAnalyticsConfig): ModuleWithProviders<AnalyticsModule> {
         return {
             ngModule: AnalyticsModule,
             providers: [{ provide: 'gaConfig', useValue: config }, AnalyticsDirective],
