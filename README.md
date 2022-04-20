@@ -30,6 +30,12 @@ import { ITrackingType, AnalyticsModule } from 'perpetuum-analytics'
 
 ...
 
+constructor(
+    private analyticsService: AnalyticsService
+) {}
+
+...
+
 imports: [
     ...
     AnalyticsModule.forRoot({

@@ -49,6 +49,12 @@ import { AnalyticsService } from 'perpetuum-analytics'
 
 ...
 
+constructor(
+    private analyticsService: AnalyticsService
+) {}
+
+...
+
 ngOnInit(): void {
    this.analyticsService.setGoogleAnalyticsScripts()
 }
