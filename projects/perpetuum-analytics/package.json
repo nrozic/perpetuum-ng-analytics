@@ -1,7 +1,7 @@
 {
   "name": "perpetuum-analytics",
   "description": "Google Analytics module for Angular. This module is SSR compatible and can be used in Angular Universal applications",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "author": {
     "name": "Nikola Rožić",
     "email": "nikola@trilium.io",
@@ -28,5 +28,6 @@
     "@angular/common": ">=8.2.14",
     "@angular/core": ">=8.2.14",
     "rxjs": ">=6.4.0"
-  }
+  },
+  "gitHead": "70784e5ab8a822a52df12b8387a8926c203858bb"
 }
