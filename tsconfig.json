@@ -20,12 +20,17 @@
             "perpetuum-analytics/*": ["dist/perpetuum-analytics/*"],
             "@projects/*": ["projects/*"],
             "@analytics/*": ["projects/perpetuum-analytics/src/lib/*"],
-            "@node/*": ["node_modules/*"]
+            "@node/*": ["node_modules/*"],
+            "trilium-analytics": [
+                "dist/trilium-analytics/trilium-analytics",
+                "dist/trilium-analytics",
+                "dist/trilium-analytics/trilium-analytics",
+                "dist/trilium-analytics"
+            ]
         }
     },
     "angularCompilerOptions": {
         "fullTemplateTypeCheck": true,
-        "strictInjectionParameters": true,
-        "compilationMode": "partial"
+        "strictInjectionParameters": true
     }
 }
