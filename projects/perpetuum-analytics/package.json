@@ -32,5 +32,8 @@
   "scripts": {
     "lib:build": "ng build perpetuum-analytics && npm run lib:package",
     "lib:package": "cd ../../dist/perpetuum-analytics && npm pack"
+  },
+  "publishConfig": {
+    "directory": "../../dist"
   }
 }
