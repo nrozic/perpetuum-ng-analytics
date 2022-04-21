@@ -35,7 +35,6 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
-                        "tsConfig": "projects/perpetuum-analytics/tsconfig.lib.json",
                         "project": "projects/perpetuum-analytics/ng-package.json"
                     },
                     "configurations": {

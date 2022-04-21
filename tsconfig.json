@@ -14,19 +14,17 @@
         "typeRoots": ["node_modules/@types"],
         "lib": ["es2018", "dom"],
         "paths": {
-            "perpetuum-ng-analytics": ["dist/perpetuum-ng-analytics"],
-            "perpetuum-ng-analytics/*": ["dist/perpetuum-ng-analytics/*"],
-            "perpetuum-analytics": ["dist/perpetuum-analytics"],
-            "perpetuum-analytics/*": ["dist/perpetuum-analytics/*"],
+            "perpetuum-ng-analytics": [
+                "dist/perpetuum-analytics/perpetuum-analytics",
+                "dist/perpetuum-analytics",
+                "dist/perpetuum-analytics/perpetuum-analytics",
+                "dist/perpetuum-analytics",
+                "dist/perpetuum-analytics/perpetuum-analytics",
+                "dist/perpetuum-analytics"
+            ],
             "@projects/*": ["projects/*"],
             "@analytics/*": ["projects/perpetuum-analytics/src/lib/*"],
-            "@node/*": ["node_modules/*"],
-            "trilium-analytics": [
-                "dist/trilium-analytics/trilium-analytics",
-                "dist/trilium-analytics",
-                "dist/trilium-analytics/trilium-analytics",
-                "dist/trilium-analytics"
-            ]
+            "@node/*": ["node_modules/*"]
         }
     },
     "angularCompilerOptions": {

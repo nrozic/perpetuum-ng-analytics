@@ -26,8 +26,7 @@
   },
   "peerDependencies": {
     "@angular/common": ">=8.2.14",
-    "@angular/core": ">=8.2.14",
-    "rxjs": ">=6.4.0"
+    "@angular/core": ">=8.2.14"
   },
   "gitHead": "810513ef8774599778bdbfaf508ab3d7e90b0380",
   "scripts": {
