@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.14](https://github.com/nrozic/perpetuum-ng-analytics/compare/perpetuum-analytics@2.0.13...perpetuum-analytics@2.0.14) (2022-04-21)
+
+**Note:** Version bump only for package perpetuum-analytics
+
 ## [2.0.13](https://github.com/nrozic/perpetuum-ng-analytics/compare/perpetuum-analytics@2.0.12...perpetuum-analytics@2.0.13) (2022-04-21)
 
 **Note:** Version bump only for package perpetuum-analytics
