@@ -7,20 +7,23 @@
         "declaration": false,
         "downlevelIteration": true,
         "experimentalDecorators": true,
-        "module": "esnext",
+        "module": "es2020",
         "moduleResolution": "node",
         "importHelpers": true,
         "target": "es2015",
         "typeRoots": ["node_modules/@types"],
         "lib": ["es2018", "dom"],
         "paths": {
-            "perpetuum-ng-analytics": ["dist/perpetuum-ng-analytics"],
-            "perpetuum-ng-analytics/*": ["dist/perpetuum-ng-analytics/*"],
-            "perpetuum-analytics": ["dist/perpetuum-analytics"],
-            "perpetuum-analytics/*": ["dist/perpetuum-analytics/*"],
+            "perpetuum-ng-analytics": [
+                "dist/perpetuum-analytics/perpetuum-analytics",
+                "dist/perpetuum-analytics",
+                "dist/perpetuum-analytics/perpetuum-analytics",
+                "dist/perpetuum-analytics",
+                "dist/perpetuum-analytics/perpetuum-analytics",
+                "dist/perpetuum-analytics"
+            ],
             "@projects/*": ["projects/*"],
             "@analytics/*": ["projects/perpetuum-analytics/src/lib/*"],
-            "@demoapp/*": ["projects/demo-app/src/app/*"],
             "@node/*": ["node_modules/*"]
         }
     },
