@@ -1,7 +1,7 @@
 import { Injectable, Inject, PLATFORM_ID, Renderer2, RendererFactory2 } from '@angular/core'
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router'
 import { DOCUMENT, isPlatformBrowser } from '@angular/common'
-import { filter, map, mergeMap } from 'rxjs/operators'
+import { delay, filter, map, mergeMap } from 'rxjs/operators'
 import { Title } from '@angular/platform-browser'
 
 import { IAnalyticsConfig, IEventData } from './models/Analytics-config.model'
@@ -153,17 +153,18 @@ export class AnalyticsService {
     private _startTracking(): void {
         this.router.events
             .pipe(
-                filter(event => event instanceof NavigationEnd),
+                filter((event) => event instanceof NavigationEnd),
                 map(() => this.activatedRoute),
-                map(route => {
+                map((route) => {
                     while (route.firstChild) {
                         route = route.firstChild
                     }
 
                     return route
                 }),
-                filter(route => route.outlet === 'primary'),
-                mergeMap(route => route.data)
+                filter((route) => route.outlet === 'primary'),
+                mergeMap((route) => route.data),
+                delay(500)
             )
             .subscribe(() => {
                 this._sendPageViewEvent()
