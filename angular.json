@@ -10,7 +10,7 @@
             "prefix": "perpetuum",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "builder": "@angular-devkit/build-ng-packagr:build",
                     "options": {
                         "tsConfig": "projects/perpetuum-analytics/tsconfig.lib.json",
                         "project": "projects/perpetuum-analytics/ng-package.json"
@@ -33,7 +33,7 @@
             "prefix": "perpetuum",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "builder": "@angular-devkit/build-ng-packagr:build",
                     "options": {
                         "project": "projects/perpetuum-analytics/ng-package.json"
                     },
