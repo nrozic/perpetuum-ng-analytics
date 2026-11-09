@@ -29,6 +29,7 @@
                     "builder": "@angular/build:unit-test",
                     "options": {
                         "tsConfig": "projects/perpetuum-analytics/tsconfig.spec.json",
+                        "isolate": true,
                         "coverageInclude": ["projects/perpetuum-analytics/src/lib/**/*.ts"],
                         "coverageExclude": ["**/*.spec.ts", "**/testing/**"],
                         "coverageThresholds": {
