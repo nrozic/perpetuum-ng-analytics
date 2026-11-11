@@ -6,6 +6,7 @@ import { filter } from 'rxjs'
 
 import { ANALYTICS_CONFIG, ConsentState, EventParams } from './analytics-config'
 import { GoogleTag, installGoogleTag } from './google-tag'
+import { CustomEventName, RecommendedEventName, RecommendedEvents } from './recommended-events'
 
 /** Sends what happens in the app to Google: page views on its own, events when asked. */
 @Injectable({ providedIn: 'root' })
@@ -34,7 +35,10 @@ export class Analytics {
         if (this.router.navigated) this.sendPageView()
     }
 
-    /** Sends a custom event, such as `add_to_cart` or `sign_up`. */
+    /** Sends a recommended GA4 event, such as `purchase` or `add_to_cart`, with its parameters checked by type. */
+    event<Name extends RecommendedEventName>(name: Name, params?: RecommendedEvents[Name]): void
+    /** Sends any other event, with free parameters. */
+    event<Name extends string>(name: CustomEventName<Name>, params?: EventParams): void
     event(name: string, params: EventParams = {}): void {
         this.googleTag?.event(name, params)
     }
