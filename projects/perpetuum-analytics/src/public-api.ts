@@ -9,3 +9,4 @@ export type {
     GoogleAnalyticsConfig,
     TagManagerConfig,
 } from './lib/analytics-config'
+export type { EventItem, RecommendedEventName, RecommendedEvents } from './lib/recommended-events'

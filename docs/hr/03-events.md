@@ -44,7 +44,7 @@ export class SignUpForm {
 
 ## Webshop
 
-GA4 eventi webshopa nose `currency`, `value` i `items`:
+GA4 eventi webshopa nose `currency`, `value` i `items`. Google `value` broji kao prihod uz `currency`, a izvještaji webshopa čitaju proizvode iz `items`:
 
 ```ts
 this.analytics.event('purchase', {
@@ -56,6 +56,27 @@ this.analytics.event('purchase', {
 ```
 
 Popis [preporučenih evenata](https://support.google.com/analytics/answer/9267735) i njihovih parametara vodi Google.
+
+## Tipizirani preporučeni eventi
+
+_Od verzije 3.2_
+
+Za evente koje Google preporučuje (`purchase`, `add_to_cart`, `begin_checkout`, `view_item`, `search`, `sign_up` i ostale s popisa) editor nudi parametre i proizvode u `items`, a poznati parametar krivog tipa vidiš već dok pišeš:
+
+```ts
+// Ne kompajlira se: value je broj (Type 'string' is not assignable to type 'number').
+this.analytics.event('add_to_cart', { currency: 'EUR', value: '12.50', items: [{ item_id: 'BURA-250' }] })
+```
+
+Proizvod se imenuje s `item_id`, `item_name` ili oboje, a `items` je uvijek popis. Vlastiti parametri postavljeni u Google Analyticsu idu uz standardne, i na eventu i na svakom proizvodu. Svako drugo ime eventa i dalje prima slobodne parametre. Tipovi ne dodaju ništa u izvođenju, a svaki poziv koji se kompajlirao u 3.0 kompajlira se i dalje. Za opis proizvoda u vlastitom kodu uvezi tip proizvoda:
+
+```ts
+import { EventItem } from '@triliumhr/perpetuum-analytics'
+
+function itemOf(line: OrderLine): EventItem {
+    return { item_id: line.sku, item_name: line.name, price: line.price, quantity: line.quantity }
+}
+```
 
 ## Što ostaje izvan evenata
 

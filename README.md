@@ -67,7 +67,7 @@ From code:
 inject(Analytics).event('sign_up', { method: 'email' })
 ```
 
-Event names and parameters are the ones Google Analytics 4 uses (`add_to_cart`, `purchase`, `value`, `currency`, `items`…).
+Event names and parameters are the ones Google Analytics 4 uses (`add_to_cart`, `purchase`, `value`, `currency`, `items`…). Since 3.2, recommended events such as `purchase` get typed parameters and `items`: autocompletion, and a known parameter of the wrong type does not compile. Every call that compiled in 3.0 still compiles. See [Typed recommended events](docs/en/03-events.md#typed-recommended-events).
 
 ## Consent Mode
 
