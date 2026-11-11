@@ -13,7 +13,7 @@ export type RecommendedEventName = keyof RecommendedEvents
 /** Any event name Google does not recommend, so a recommended name always gets its typed parameters. */
 export type CustomEventName<Name extends string> = Name extends RecommendedEventName ? never : Name
 
-type OwnParameters = {
+interface OwnParameters {
     add_payment_info: Money & Coupon & { readonly payment_type?: string }
     add_shipping_info: Money & Coupon & { readonly shipping_tier?: string }
     add_to_cart: Money
@@ -65,18 +65,33 @@ type ItemName = { readonly item_id: string; readonly item_name?: string } | { re
 type Items = readonly EventItem[]
 
 /** Every recommended event may list its products and carry custom parameters set up in Google Analytics. */
-type SharedParameters = { readonly items?: Items; readonly [customParameter: string]: unknown }
+interface SharedParameters {
+    readonly items?: Items
+    readonly [customParameter: string]: unknown
+}
 
 /** Google counts `value` as revenue only with its `currency` (ISO 4217, e.g. `EUR`). */
-type Money = { readonly value?: number; readonly currency?: string }
+interface Money {
+    readonly value?: number
+    readonly currency?: string
+}
 
-type Coupon = { readonly coupon?: string }
+interface Coupon {
+    readonly coupon?: string
+}
 
-type Order = { readonly transaction_id?: string; readonly shipping?: number; readonly tax?: number }
+interface Order {
+    readonly transaction_id?: string
+    readonly shipping?: number
+    readonly tax?: number
+}
 
-type ItemList = { readonly item_list_id?: string; readonly item_list_name?: string }
+interface ItemList {
+    readonly item_list_id?: string
+    readonly item_list_name?: string
+}
 
-type Promotion = {
+interface Promotion {
     readonly creative_name?: string
     readonly creative_slot?: string
     readonly promotion_id?: string

@@ -44,7 +44,7 @@ export class SignUpForm {
 
 ## Ecommerce
 
-GA4 ecommerce events carry `currency`, `value` and `items`:
+GA4 ecommerce events carry `currency`, `value` and `items`. Google counts `value` as revenue only together with `currency`, and its ecommerce reports read the products from `items`:
 
 ```ts
 this.analytics.event('purchase', {
@@ -56,6 +56,27 @@ this.analytics.event('purchase', {
 ```
 
 Google keeps the list of [recommended events](https://support.google.com/analytics/answer/9267735) and their parameters.
+
+## Typed recommended events
+
+_Since 3.2_
+
+For the events Google recommends (`purchase`, `add_to_cart`, `begin_checkout`, `view_item`, `search`, `sign_up` and the rest of the list), the editor suggests the parameters and the products in `items`, and a known parameter of the wrong type is caught while you write:
+
+```ts
+// Does not compile: value is a number (Type 'string' is not assignable to type 'number').
+this.analytics.event('add_to_cart', { currency: 'EUR', value: '12.50', items: [{ item_id: 'BURA-250' }] })
+```
+
+An item is named by `item_id`, `item_name` or both, and `items` is always a list. Custom parameters set up in Google Analytics go next to the standard ones, on the event and on each item. Any other event name keeps free parameters. The types cost nothing at runtime, and every call that compiled in 3.0 still compiles. To describe products in your own code, import the item type:
+
+```ts
+import { EventItem } from '@triliumhr/perpetuum-analytics'
+
+function itemOf(line: OrderLine): EventItem {
+    return { item_id: line.sku, item_name: line.name, price: line.price, quantity: line.quantity }
+}
+```
 
 ## What not to send
 

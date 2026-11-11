@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+-   `analytics.event()` is typed for GA4 recommended and ecommerce events (`purchase`, `add_to_cart`, `view_item`, `search`…): autocompletion for their parameters and `items`, and a known parameter of the wrong type does not compile. Custom parameters stay allowed, nothing becomes required and any other event name keeps free parameters. `EventItem`, `RecommendedEvents` and `RecommendedEventName` are exported. Types only, no runtime change.
+
 ## [3.0.3] - 2026-10-29
 
 ### Changed
