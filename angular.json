@@ -29,7 +29,7 @@
                     "builder": "@angular/build:unit-test",
                     "options": {
                         "tsConfig": "projects/perpetuum-analytics/tsconfig.spec.json",
-                        "isolate": true,
+                        "runnerConfig": "vitest.config.mts",
                         "coverageInclude": ["projects/perpetuum-analytics/src/lib/**/*.ts"],
                         "coverageExclude": ["**/*.spec.ts", "**/testing/**"],
                         "coverageThresholds": {
